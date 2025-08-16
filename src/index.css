@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Glint-inspired Portfolio Design System */
+
+@layer base {
+  :root {
+    /* Dark theme with neon green accents */
+    --background: 218 28% 7%;
+    --foreground: 0 0% 95%;
+
+    --card: 218 28% 9%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 218 28% 9%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 142 76% 56%;
+    --primary-foreground: 218 28% 7%;
+
+    --secondary: 218 28% 12%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 218 28% 12%;
+    --muted-foreground: 215 25% 60%;
+
+    --accent: 142 76% 56%;
+    --accent-foreground: 218 28% 7%;
+
+    --destructive: 0 75% 65%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 218 28% 15%;
+    --input: 218 28% 15%;
+    --ring: 142 76% 56%;
+
+    --radius: 0.75rem;
+
+    /* Neon green variants */
+    --neon: 142 76% 56%;
+    --neon-glow: 142 76% 56%;
+    --neon-dark: 142 76% 45%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(142 76% 56%), hsl(142 76% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(218 28% 7%) 0%, hsl(218 28% 12%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(218 28% 9%) 0%, hsl(218 28% 12%) 100%);
+
+    /* Shadows */
+    --shadow-neon: 0 0 30px hsl(142 76% 56% / 0.3);
+    --shadow-card: 0 10px 40px hsl(218 28% 4% / 0.4);
+    --shadow-large: 0 25px 50px hsl(218 28% 4% / 0.5);
+
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent to-neon bg-clip-text text-transparent;
+  }
+
+  .glow-effect {
+    box-shadow: var(--shadow-neon);
+  }
+
+  .card-modern {
+    @apply bg-gradient-to-br from-card to-muted border border-border/50 backdrop-blur-sm;
+    box-shadow: var(--shadow-card);
+  }
+
+  .btn-neon {
+    @apply bg-gradient-to-r from-accent to-neon text-accent-foreground font-semibold px-8 py-4 rounded-lg;
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-neon;
+    @apply border border-accent/30 hover:border-accent;
+  }
+
+  .btn-outline-neon {
+    @apply bg-transparent border-2 border-accent text-accent font-semibold px-8 py-4 rounded-lg;
+    @apply transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105;
+    @apply hover:shadow-neon;
+  }
+
+  .section-padding {
+    @apply py-20 lg:py-32;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 20px hsl(142 76% 56% / 0.2); }
+  to { box-shadow: 0 0 30px hsl(142 76% 56% / 0.6); }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-accent rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-neon;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
